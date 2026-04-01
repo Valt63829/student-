@@ -1,0 +1,209 @@
+/* ── Upload.css ── */
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(24px, 6vw, 50px) clamp(16px, 5vw, 50px);
+  min-height: 100vh;
+}
+
+/* Title */
+.upload-container h1 {
+  margin-bottom: 20px;
+  font-size: clamp(20px, 5vw, 32px);
+  text-align: center;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Upload Box ──
+   was hardcoded width: 400px — breaks on phones.
+   Now: fills screen on mobile, caps at 460px on desktop. */
+.upload-box {
+  width: min(100%, 460px);
+  padding: clamp(20px, 5vw, 30px);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Inputs */
+.upload-box input,
+.upload-box textarea,
+.upload-box select {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgb(243, 241, 241);
+  width: 100%;
+  font-size: clamp(13px, 3vw, 15px);
+}
+
+/* File input */
+.upload-box input[type="file"] {
+  color: white;
+  font-size: clamp(12px, 2.8vw, 14px);
+}
+
+/* Textarea */
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Button */
+.upload-box button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  font-size: clamp(13px, 3vw, 15px);
+  margin-top: 0;             /* override global button margin */
+}
+
+.upload-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3b82f6;
+}
+
+.upload-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Progress bar */
+.progress-wrapper {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Success message */
+.success-msg {
+  color: #4ade80;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  font-size: clamp(13px, 3vw, 15px);
+}
+
+/* Back button */
+.back-btn {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  margin-top: 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  color: white;
+  font-weight: bold;
+  font-size: clamp(12px, 3vw, 14px);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #6366f1;
+}
+
+/* ══════════════════════════════════
+   📱  MOBILE  ( max 480px )
+══════════════════════════════════ */
+@media (max-width: 480px) {
+  .upload-container {
+    padding: 20px 14px;
+  }
+
+  .upload-box {
+    width: 100%;
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+}
+
+/* ══════════════════════════════════
+   📟  TABLET  ( 481px – 768px )
+══════════════════════════════════ */
+@media (min-width: 481px) and (max-width: 768px) {
+  .upload-box {
+    width: min(90%, 460px);
+  }
+}
+
+/* ══════════════════════════════════
+   💻  LAPTOP  ( 769px+ )
+══════════════════════════════════ */
+@media (min-width: 769px) {
+  .upload-box {
+    width: 460px;
+  }
+}
+/* ── Drag & Drop Zone (ADDED ONLY) ── */
+.drop-zone {
+  border: 2px dashed rgba(255,255,255,0.3);
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+  background: rgba(255,255,255,0.03);
+}
+
+.drop-zone:hover {
+  border-color: #38bdf8;
+  background: rgba(56,189,248,0.08);
+}
+
+.drop-zone.active {
+  border-color: #3b82f6;
+  background: rgba(59,130,246,0.15);
+  box-shadow: 0 0 15px rgba(59,130,246,0.4);
+}
+
+.drop-zone p {
+  margin: 0;
+  font-size: clamp(13px, 3vw, 15px);
+  color: #cbd5f5;
+}
+
+.drop-zone p strong {
+  color: #4ade80;
+}
